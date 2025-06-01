@@ -32,4 +32,4 @@ RUN pip install gunicorn
 
 EXPOSE 8000/TCP
 
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8000", "core.wsgi:application"]
+CMD sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 core.wsgi:application"
